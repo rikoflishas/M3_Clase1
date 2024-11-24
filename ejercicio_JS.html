@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Javascript. Calculadora</title>
+</head>
+<body>
+    
+    <h2>Calculadora en Javascript</h2>
+
+    <script>
+        let operador = prompt("¿cual operación matemática vas a realizar? ('+' '-' '*' '/')");
+        let a = parseFloat( prompt("Primer parametro: ") );
+        let b = parseFloat( prompt("Segundo parametro: ") );
+
+        let suma;
+        let resta;
+        let multiplicacion;
+        let division;
+
+        if( isNaN(a) || isNaN(b) ){
+            console.log("Número invalido");
+        }   else{
+            
+            if(operador == '+'){
+                suma = a + b;
+                console.log( `Resultado de suma: ${suma}` );
+            }else if(operador == '-'){
+                resta = a - b;
+                console.log( `Resultado de resta: ${resta}` );
+            }else if(operador == '*'){
+                multiplicacion = a * b;
+                console.log(`Resultado de multiplicacion: ${multiplicacion}`);
+            }else if(operador == '/'){
+                if(b !== 0){
+                    division = a/b;
+                    console.log(`Resultado de division: ${division}`);
+                }else{
+                    console.log("No se puede dividir entre 0");
+                }
+            }else console.log("Error. No has ingresado una operación no valida");
+        }
+        
+        
+    </script>
+</body>
+</html>
