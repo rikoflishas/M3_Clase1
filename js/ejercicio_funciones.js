@@ -7,35 +7,39 @@ Un programa que adivinara un número aleatorio secreto
 */
 
 //VARIABLE GLOBAL, se inicializa con let
-let mensaje_Bienvenida = "BIENVENIDOS AL JUEGO DE ADIVINAR EL NUMERO DE LA MUERTE";
+let mensaje_Bienvenida = "!!____BIENVENIDOS AL JUEGO DE ADIVINAR EL NUMERO DE LA MUERTE____!!";
 
 //FUNCION QUE GENERA UN NUMERO RANDOM
-function randomNumber(){
-    var numAleatorio = Math.floor(Math.random * 600) + 1;
+//la variable local es numAleatorio
+function generateRandomNumber(min,max){
+    var numAleatorio = Math.floor( Math.random() * (max - min + 1) ) + min;
     return numAleatorio;
 }
 
 //FUNCION PARA JUGAR
-function juego(){
-    alert(mensaje_Bienvenida);
+function juego()
+{
+    console.log(mensaje_Bienvenida);
     let intentos = 0; // contador de intentos
     let adivinado = false;
-    //es una constante porque es un número que no debe de cambiar
-    const numSecreto = randomNumber();
 
-    while(adivinado != true){
-        console.log("entra al ciclo")
-        let intento = parseInt(prompt("Adivina que numero estoy pensando, entre el 1 y 600"));
+    //es una constante porque es un número que no debe de cambiar
+    const numSecreto = generateRandomNumber(0, 1000);
+
+    while(!adivinado){
+        // console.log("===Entra al ciclo===")
+        let intento = parseInt(prompt("Adivina que numero estoy pensando, entre el 1 y 1000"));
 
         intentos++;
 
         if(intento === numSecreto){
-            console.log(`¡Felicidades! Adivinaste en el intento numero ${intentos} `);
+            alert(`¡Felicidades! Adivinaste el número secreto ${numSecreto} en el intento numero ${intentos}`);
+            adivinado = true;
         }else if(intento < numSecreto){
-            alert("el numero es menor al número secreto")
+            alert("El número secreto es MAYOR, sigue intentando")
         }else if(intento > numSecreto){
-            alert("el numero es mayor al número secreto");
-        }else console.log("ingresa numero valido");
+            alert("El número secreto es menor, sigue intentando");  
+        }else console.log("Ingresa un numero valido");
     }
 }
 
